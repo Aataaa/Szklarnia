@@ -31,8 +31,8 @@ void Silnik::ruszSilnik(sf::RenderWindow &okno, bool m)
 
 
 	bool menu = false;
-
-
+int ktora_roslina=0;
+int licznik_tekstu=0;
 
 muzyka.ladujmuzyke(false);
 
@@ -81,7 +81,7 @@ sprajttlo.setScale(1.6, 1.8);
 
 	}
 
-sf::RectangleShape ramka(sf::Vector2f(300, 200));
+sf::RectangleShape ramka(sf::Vector2f(320, 200));
 ramka.setPosition(700,100);
 ramka.setFillColor(sf::Color::White);
 ramka.setOutlineThickness(10);
@@ -89,13 +89,26 @@ ramka.setOutlineColor(sf::Color(250, 150, 100));
 
 
 
+int ile2=4;
+Text tekst2[ile2];
+string str2[] = {"Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n warzyw , owocow i kwiatow. \nPowodzenia!",
+"Jesli chcesz podlac lub nawiezc rosline, \nkliknij na wybrana rosline, \na potem na podlej lub nawiez. \nMozesz takze zakonczyc dzien. \nPamietaj, ze liczba akcji jest ograniczona!",
+"jesli chcesz zasadzic rosline, \nkliknij na przycisk, \nktorego jeszcze nie ma xd",
+"dzien:"+naString(dzien)+"\nakcje: "+naString(szklarnia.podaj_ileakcji())};
+for(int j=0;j<ile2;j++)
+	{
+		tekst2[j].setFont(czcionka);
 
-Text tekst2;
-tekst2.setFont(czcionka);
-tekst2.setString( "Witaj w symulacji szklarni/r/n  dzien:"+naString(dzien)+"/r/n akcje: "+naString(szklarnia.podaj_ileakcji()) );
-tekst2.setCharacterSize(15);
-tekst2.setPosition(710, 110);
-tekst2.setColor( sf::Color::Black );
+		tekst2[j].setString(str2[j]);
+
+		tekst2[j].setCharacterSize(15);
+
+            tekst2[j].setPosition(700, 110);
+
+            tekst2[j].setColor( sf::Color::Black );
+        }
+
+
 
 
 
@@ -115,17 +128,58 @@ if(szklarnia.podaj_ileakcji()<=0)
 		while(okno.pollEvent(zdarzenie))
 		{
 
+
+if(ramka.getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+		if(licznik_tekstu<ile2-1)
+        {
+            licznik_tekstu++;
+            if(licznik_tekstu==0)   postac.podstawowy();
+            if(licznik_tekstu==1)postac.owoce();
+           else if(licznik_tekstu==2) postac.szpadel();
+            else postac.warz();
+
+        }
+		else
+        {
+            licznik_tekstu=0;
+
+        }
+			}
+
+
 if(tekst[0].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
-szklarnia.podlewanie_roslin(1);
+		switch(ktora_roslina)
+		{
+		case 0: break;
+		case 1:szklarnia.podlewanie_roslin(1); break;
+		case 2:szklarnia.podlewanie_roslin(2); break;
+		case 3:szklarnia.podlewanie_roslin(3); break;
+		case 4:szklarnia.podlewanie_roslin(4); break;
+		default: break;
+
+		}
+ktora_roslina=0;
 			}
 
 if(tekst[1].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
-szklarnia.nawozenie_roslin(1);
-			}
+switch(ktora_roslina)
+		{
+		case 0: break;
+		case 1:szklarnia.nawozenie_roslin(1); break;
+		case 2:szklarnia.nawozenie_roslin(2); break;
+		case 3:szklarnia.nawozenie_roslin(3); break;
+		case 4:szklarnia.nawozenie_roslin(4); break;
+		default: break;
+
+		}
+	ktora_roslina=0;
+				}
 
 if(tekst[2].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
@@ -135,6 +189,32 @@ dzien++;
 noc.ruszNoc(okno, m);
 
 			}
+
+if(tekst[3].getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+ktora_roslina=1;
+			}
+
+if(tekst[4].getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+ktora_roslina=2;
+			}
+
+if(tekst[5].getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+ktora_roslina=3;
+
+			}
+if(tekst[6].getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+ktora_roslina=4;
+
+			}
+
 
 			if(zdarzenie.type == Event::KeyReleased && zdarzenie.key.code == Keyboard::Escape)
 
@@ -202,11 +282,11 @@ okno.draw(sprajttlo);
 			for(int i=0;i<ile;i++)
 			okno.draw(tekst[i]);
 			okno.draw(ramka);
-okno.draw(tekst2);
 
 			okno.draw(uprawa);
 			okno.draw(akcje);
 
+okno.draw(tekst2[licznik_tekstu]);
 
 
 		okno.display();
