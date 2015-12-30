@@ -1,7 +1,7 @@
 
 #include "Akcje.h"
 #include <Windows.h>
-#include <math.h>
+
 #include <iostream>
 
 

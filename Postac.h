@@ -2,7 +2,8 @@
 #pragma once
 
 #include <SFML\Graphics.hpp>
-#include <vector>
+#include <Windows.h>
+
 
 class Postac: public sf::Drawable,
 	sf::Transformable
@@ -11,12 +12,6 @@ public:
 	Postac(void);
 	~Postac(void);
 
-	enum Status {
-	NIC,
-	SZPADEL,
-	OWOCE,
-	WARZYWA
-	};
 
 
 	void aktualizuj();
@@ -41,7 +36,7 @@ sf::Texture tekstura1;
 		sf::Texture tekstura4;
 		sf::Sprite sprajt4;
 
-	Status status;
+
 
 	float szybkosc;
 	size_t klatka;

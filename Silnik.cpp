@@ -88,13 +88,19 @@ ramka.setOutlineThickness(10);
 ramka.setOutlineColor(sf::Color(250, 150, 100));
 
 
-
-int ile2=4;
+string typ[]={"Roslina", "Owoc", "Kwiat", "Warzywo"};
+int ile2=5;
 Text tekst2[ile2];
 string str2[] = {"Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n warzyw , owocow i kwiatow. \nPowodzenia!",
 "Jesli chcesz podlac lub nawiezc rosline, \nkliknij na wybrana rosline, \na potem na podlej lub nawiez. \nMozesz takze zakonczyc dzien. \nPamietaj, ze liczba akcji jest ograniczona!",
 "jesli chcesz zasadzic rosline, \nkliknij na przycisk, \nktorego jeszcze nie ma xd",
-"dzien:"+naString(dzien)+"\nakcje: "+naString(szklarnia.podaj_ileakcji())};
+"dzien:"+naString(dzien)+"\nakcje: "+naString(szklarnia.podaj_ileakcji()),
+"Roslina:"+szklarnia.opis(ktora_roslina-1)+" Typ: "+typ[szklarnia.opis6(ktora_roslina-1)]+"\nWoda: "+naString(szklarnia.opis2(ktora_roslina-1))+" Wzrost: "+naString(szklarnia.opis3(ktora_roslina-1))+"\nZdrowie: "+naString(szklarnia.opis4(ktora_roslina-1))+"Cecha: "+naString(szklarnia.opis5(ktora_roslina-1))};
+
+
+
+
+
 for(int j=0;j<ile2;j++)
 	{
 		tekst2[j].setFont(czcionka);
@@ -116,6 +122,24 @@ if(szklarnia.podaj_ileakcji()<=0)
 {
     dzien++;
     szklarnia.koniec_dnia();
+      if(szklarnia.podaj_los()==0)
+       noc.zmientekst();
+       else if(szklarnia.podaj_los()==1)
+       {
+            noc.zmientekst2();
+        noc.podstawowy();
+       }
+       else if(szklarnia.podaj_los()==2)
+       {
+            noc.zmientekst3();
+       noc.zmien();
+       }
+
+        else  if(szklarnia.podaj_los()==3)
+        {
+             noc.zmientekst4();
+       noc.zmien2();
+        }
     noc.ruszNoc(okno, m);
 }
 
@@ -134,12 +158,13 @@ if(ramka.getGlobalBounds().contains(mysz) &&
 			{
 		if(licznik_tekstu<ile2-1)
         {
-            licznik_tekstu++;
+
             if(licznik_tekstu==0)   postac.podstawowy();
             if(licznik_tekstu==1)postac.owoce();
            else if(licznik_tekstu==2) postac.szpadel();
+           else if(licznik_tekstu==3) postac.podstawowy();
             else postac.warz();
-
+licznik_tekstu++;
         }
 		else
         {
@@ -155,10 +180,10 @@ if(tekst[0].getGlobalBounds().contains(mysz) &&
 		switch(ktora_roslina)
 		{
 		case 0: break;
-		case 1:szklarnia.podlewanie_roslin(1); break;
-		case 2:szklarnia.podlewanie_roslin(2); break;
-		case 3:szklarnia.podlewanie_roslin(3); break;
-		case 4:szklarnia.podlewanie_roslin(4); break;
+		case 1:szklarnia.podlewanie_roslin(0); break;
+		case 2:szklarnia.podlewanie_roslin(1); break;
+		case 3:szklarnia.podlewanie_roslin(2); break;
+		case 4:szklarnia.podlewanie_roslin(3); break;
 		default: break;
 
 		}
@@ -171,10 +196,10 @@ if(tekst[1].getGlobalBounds().contains(mysz) &&
 switch(ktora_roslina)
 		{
 		case 0: break;
-		case 1:szklarnia.nawozenie_roslin(1); break;
-		case 2:szklarnia.nawozenie_roslin(2); break;
-		case 3:szklarnia.nawozenie_roslin(3); break;
-		case 4:szklarnia.nawozenie_roslin(4); break;
+		case 1:szklarnia.nawozenie_roslin(0); break;
+		case 2:szklarnia.nawozenie_roslin(1); break;
+		case 3:szklarnia.nawozenie_roslin(2); break;
+		case 4:szklarnia.nawozenie_roslin(3); break;
 		default: break;
 
 		}
@@ -186,6 +211,25 @@ if(tekst[2].getGlobalBounds().contains(mysz) &&
 			{
 szklarnia.koniec_dnia();
 dzien++;
+if(szklarnia.podaj_los()==0)
+       noc.zmientekst();
+       else if(szklarnia.podaj_los()==1)
+       {
+            noc.zmientekst2();
+        noc.podstawowy();
+       }
+       else if(szklarnia.podaj_los()==2)
+       {
+            noc.zmientekst3();
+       noc.zmien();
+       }
+
+        else  if(szklarnia.podaj_los()==3)
+        {
+             noc.zmientekst4();
+       noc.zmien2();
+        }
+
 noc.ruszNoc(okno, m);
 
 			}
@@ -225,43 +269,9 @@ ktora_roslina=4;
             }
 
 
-			if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::W)
-			{
-
-				postac.szpadel();
-			}
-
-
-			if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::Q)
-			{
-
-				postac.owoce();
-			}
-
-
-
-if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::R)
-			{
-
-				postac.warz();
-			}
-
-
-
-
-
-
-if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::G)
-			{
-
-				postac.podstawowy();
-
-			}
-
-
-
 		}
-
+szklarnia.stan_roslin();
+szklarnia.wygrana();
 for(int i=0;i<ile;i++)
 			if(tekst[i].getGlobalBounds().contains(mysz))
 			{
@@ -285,6 +295,7 @@ okno.draw(sprajttlo);
 
 			okno.draw(uprawa);
 			okno.draw(akcje);
+			okno.draw(odznaki);
 
 okno.draw(tekst2[licznik_tekstu]);
 

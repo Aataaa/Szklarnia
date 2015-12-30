@@ -25,18 +25,30 @@ Noc::Noc()
 	sprajt2.setTexture(tekstura2);
 	sprajt2.setTextureRect(IntRect(0,0,537,308));
 
+ if(!tekstura3.loadFromFile("sprajty/gracz/11.png"))
+	{
+		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
+		return;
+	}
 
+	sprajt3.setTexture(tekstura3);
+	sprajt3.setTextureRect(IntRect(0,0,607,694));
 
 
 	klatka = 0;
 	szybkosc = 2.5;
     sprajt1.setPosition(500,720/2);
      sprajt2.setPosition(500,720/2);
+     sprajt3.setPosition(500,720/2);
     sprajt=sprajt1;
     	zegar.restart();
 zegar2.restart();
 
-
+str="";
+str1="Nic sie nie stalo";
+str2="Noc byla bardzo ciepla";
+str3="Szkodniki";
+str4="Choroba";
 
 }
 
@@ -46,16 +58,7 @@ Noc::~Noc(void)
 muzyka.stopmuzyka();
 }
 
-/*
-void Noc::draw(sf::RenderTarget &target, sf::RenderStates states) const
-{
-	states.transform *= getTransform();
 
-	target.draw(sprajt);
-
-
-}
-*/
 void Noc::aktualizuj()
 {
 
@@ -64,7 +67,7 @@ void Noc::aktualizuj()
 	if(zegar.getElapsedTime() > sf::seconds(0.2f) )
 	{
 
-		if(klatka < 3 /*liczba klatek animacji*/)
+		if(klatka < 3 )
         {
             klatka++;
 
@@ -73,12 +76,12 @@ void Noc::aktualizuj()
 
 		else
         {
-            klatka = 0; //zapetlanie animacji
+            klatka = 0;
 
         }
 
 		sprajt.setTextureRect(IntRect(klatka*537,0,537,308));
-								//x, y, szerokosc, wysokosc
+
 
 
 		zegar.restart();
@@ -100,6 +103,30 @@ void Noc::zmien()
 
 }
 
+
+void Noc::zmien2()
+{
+	sprajt=sprajt3;
+
+
+}
+
+void Noc::zmientekst()
+{
+	str=str1;
+}
+void Noc::zmientekst2()
+{
+	str=str2;
+}
+void Noc::zmientekst3()
+{
+	str=str3;
+}
+void Noc::zmientekst4()
+{
+	str=str4;
+}
 
 
 void Noc::ruszNoc(sf::RenderWindow &okno, bool m)
@@ -144,6 +171,19 @@ Text tekst;
 		tekst.setPosition(450, 50);
 
 
+Text tekst2;
+
+
+
+
+		tekst2.setFont(czcionka);
+		tekst2.setCharacterSize(95);
+
+		tekst2.setString(str);
+		tekst2.setPosition(450, 200);
+
+
+
 if(zegar2.getElapsedTime() > sf::seconds(5) )
 {
     silnik=true;
@@ -152,29 +192,21 @@ if(zegar2.getElapsedTime() > sf::seconds(5) )
 Event zdarzenie;
 while(okno.pollEvent(zdarzenie))
 		{
-if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::O)
+if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::W)
 			{
 
-				podstawowy();
-silnik=true;
-			}
-
-
-			if(zdarzenie.type == Event::KeyPressed && zdarzenie.key.code == Keyboard::P)
-			{
-
-				zmien();
+			silnik=true;
 			}
 
 		}
 
 
 aktualizuj();
-
-		okno.clear();
+okno.clear();
 okno.draw(sprajttlo);
 okno.draw(tekst);
-		okno.draw(sprajt);
+okno.draw(tekst2);
+okno.draw(sprajt);
 
 
 

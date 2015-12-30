@@ -1,8 +1,6 @@
 
 #include "Postac.h"
-#include <Windows.h>
-#include <math.h>
-#include <iostream>
+
 
 
 
@@ -58,7 +56,7 @@ if(!tekstura4.loadFromFile("sprajty/gracz/1a.png"))
 
 
 
-	status = NIC;
+
 
 	klatka = 0;
 	szybkosc= 3.5;
@@ -94,7 +92,7 @@ void Postac::aktualizuj()
 	if(zegar.getElapsedTime() > sf::seconds(2.0f) )
 	{
 
-		if(klatka < 1 /*liczba klatek animacji*/)
+		if(klatka < 1 )
         {
             klatka++;
 
@@ -103,12 +101,10 @@ void Postac::aktualizuj()
 
 		else
         {
-            klatka = 0; //zapetlanie animacji
-
-        }
+            klatka = 0;         }
 
 		sprajt.setTextureRect(IntRect(klatka*524,0,496,694));
-								//x, y, szerokosc, wysokosc
+							
 
 
 		zegar.restart();
@@ -117,7 +113,7 @@ void Postac::aktualizuj()
 
 void Postac::podstawowy()
 {
-	status = NIC;
+	
 
 	sprajt=sprajt1;
 }
@@ -126,7 +122,7 @@ void Postac::podstawowy()
 
 void Postac::szpadel()
 {
-    status = SZPADEL;
+   
 	sprajt=sprajt2;
 
 
@@ -135,7 +131,7 @@ void Postac::szpadel()
 
 void Postac::owoce()
 {
-    status =OWOCE;
+    
 	sprajt=sprajt3;
 
 
@@ -147,7 +143,7 @@ void Postac::warz()
 {
 
 
-status = WARZYWA;
+
 	sprajt=sprajt4;
 
 

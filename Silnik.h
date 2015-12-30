@@ -9,6 +9,7 @@
 #include "Akcje.h"
 #include "Noc.h"
 #include "szklarnia.h"
+#include "Odznaki.h"
 #include <Windows.h>
 #include <sstream>
 
@@ -29,7 +30,7 @@ private:
 	Akcje akcje;
 	Muzyka muzyka;
 Noc noc;
-
+Odznaki odznaki;
 	 Szklarnia szklarnia;
 
 	 Font czcionka;

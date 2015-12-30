@@ -1,10 +1,10 @@
 #pragma once
 
 #include <SFML\Graphics.hpp>
-#include <vector>
 
-class Akcje: public sf::Drawable,
-	sf::Transformable
+
+class Akcje: public sf::Drawable, sf::Transformable
+
 {
 public:
 	Akcje(void);

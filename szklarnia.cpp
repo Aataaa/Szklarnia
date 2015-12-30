@@ -12,9 +12,9 @@ Szklarnia::Szklarnia(){
     odkwi=0;
 
 
-    roslinki.push_back(new Kwiaty("Roza", 5, 10));
-    roslinki.push_back(new Owoce("Truskawka", 8, 6));
     roslinki.push_back(new Owoce("Banan", 8, 4));
+    roslinki.push_back(new Owoce("Truskawka", 8, 6));
+    roslinki.push_back(new Kwiaty("Roza", 5, 10));
     roslinki.push_back(new Warzywa("Marchewka", 7, 8));
 
 }
@@ -43,7 +43,8 @@ int Szklarnia::podaj_elementy()
 
 std::string Szklarnia::opis(int n)
 {
-
+    std::string nic="";
+if(n==-1)return nic;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
@@ -54,7 +55,7 @@ std::string Szklarnia::opis(int n)
 }
 int Szklarnia::opis2(int n)
 {
-
+if(n==-1)return 0;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
@@ -65,7 +66,7 @@ int Szklarnia::opis2(int n)
 }
 int Szklarnia::opis3(int n)
 {
-
+if(n==-1)return 0;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
@@ -76,7 +77,7 @@ int Szklarnia::opis3(int n)
 }
 int Szklarnia::opis4(int n)
 {
-
+if(n==-1)return 0;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
@@ -87,7 +88,7 @@ int Szklarnia::opis4(int n)
 }
 int Szklarnia::opis5(int n)
 {
-
+if(n==-1)return 0;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
@@ -99,7 +100,7 @@ int Szklarnia::opis5(int n)
 
 int Szklarnia::opis6(int n)
 {
-
+if(n==-1)return 0;
  std::list<Rosliny*>::iterator iter = roslinki.begin();
         if(n>0) {
             advance(iter, n);
