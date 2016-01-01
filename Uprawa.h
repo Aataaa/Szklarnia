@@ -28,6 +28,7 @@ public:
 
 private:
 	sf::Sprite sprajt;
+
 	sf::Sprite sprajt1;
 sf::Texture tekstura1;
 	sf::Sprite sprajt2;

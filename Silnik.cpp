@@ -88,6 +88,22 @@ ramka.setOutlineThickness(10);
 ramka.setOutlineColor(sf::Color(250, 150, 100));
 
 
+sf::RectangleShape ramkaodzn(sf::Vector2f(300,160));
+ramkaodzn.setPosition(700,500);
+ramkaodzn.setFillColor(sf::Color::White);
+ramkaodzn.setOutlineThickness(10);
+ramkaodzn.setOutlineColor(sf::Color(250, 150, 100));
+Text tekstodzn;
+tekstodzn.setFont(czcionka);
+tekstodzn.setString("Odznaki: \n\nkwiat                  owoc               warzywo");
+tekstodzn.setCharacterSize(15);
+tekstodzn.setPosition(700, 510);
+tekstodzn.setColor( sf::Color::Black );
+
+
+
+
+
 string typ[]={"Roslina", "Owoc", "Kwiat", "Warzywo"};
 int ile2=5;
 Text tekst2[ile2];
@@ -95,7 +111,10 @@ string str2[] = {"Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n 
 "Jesli chcesz podlac lub nawiezc rosline, \nkliknij na wybrana rosline, \na potem na podlej lub nawiez. \nMozesz takze zakonczyc dzien. \nPamietaj, ze liczba akcji jest ograniczona!",
 "jesli chcesz zasadzic rosline, \nkliknij na przycisk, \nktorego jeszcze nie ma xd",
 "dzien:"+naString(dzien)+"\nakcje: "+naString(szklarnia.podaj_ileakcji()),
-"Roslina:"+szklarnia.opis(ktora_roslina-1)+" Typ: "+typ[szklarnia.opis6(ktora_roslina-1)]+"\nWoda: "+naString(szklarnia.opis2(ktora_roslina-1))+" Wzrost: "+naString(szklarnia.opis3(ktora_roslina-1))+"\nZdrowie: "+naString(szklarnia.opis4(ktora_roslina-1))+"Cecha: "+naString(szklarnia.opis5(ktora_roslina-1))};
+"Roslina:"+szklarnia.opis(ktora_roslina-1)+" Typ: "+typ[szklarnia.opis6(ktora_roslina-1)]+"\nWoda: "+naString(szklarnia.opis2(ktora_roslina-1))+" Wzrost: "+naString(szklarnia.opis3(ktora_roslina-1))+
+"\nZdrowie: "+naString(szklarnia.opis4(ktora_roslina-1))+"Cecha: "+naString(szklarnia.opis5(ktora_roslina-1))
+
+};
 
 
 
@@ -143,6 +162,11 @@ if(szklarnia.podaj_ileakcji()<=0)
     noc.ruszNoc(okno, m);
 }
 
+if(szklarnia.podaj_odow()==1)odznaki.zmienodow();
+if(szklarnia.podaj_odkwi()==1)odznaki.zmienodkwi();
+if(szklarnia.podaj_odwarz()==1)odznaki.zmienodwarz();
+if(szklarnia.podaj_odznake()==1)odznaki.zmienodznaka();
+
 
 
 
@@ -163,6 +187,7 @@ if(ramka.getGlobalBounds().contains(mysz) &&
             if(licznik_tekstu==1)postac.owoce();
            else if(licznik_tekstu==2) postac.szpadel();
            else if(licznik_tekstu==3) postac.podstawowy();
+
             else postac.warz();
 licznik_tekstu++;
         }
@@ -292,13 +317,14 @@ okno.draw(sprajttlo);
 			for(int i=0;i<ile;i++)
 			okno.draw(tekst[i]);
 			okno.draw(ramka);
-
+				okno.draw(ramkaodzn);
+okno.draw(odznaki);
 			okno.draw(uprawa);
 			okno.draw(akcje);
-			okno.draw(odznaki);
+
 
 okno.draw(tekst2[licznik_tekstu]);
-
+okno.draw(tekstodzn);
 
 		okno.display();
 	}

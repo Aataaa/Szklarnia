@@ -12,13 +12,23 @@ public:
 
 
 
+void zmienodwarz();
+	void zmienodow();
+	void zmienodkwi();
 
+		void zmienodznaka();
 
 
 
 
 private:
-	sf::Sprite sprajt;
+
+
+
+sf::Sprite sprajto1;
+	sf::Sprite sprajto2;
+	sf::Sprite sprajto3;
+	sf::Sprite sprajto4;
 	sf::Sprite sprajt1;
 sf::Texture tekstura1;
 	sf::Sprite sprajt2;
@@ -28,6 +38,8 @@ sf::Texture tekstura1;
 	sf::Texture tekstura4;
 		sf::Sprite sprajt4;
 
+sf::Texture tekstura5;
+		sf::Sprite sprajt5;
 
 
 

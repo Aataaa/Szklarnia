@@ -14,7 +14,7 @@ Szklarnia::Szklarnia(){
 
     roslinki.push_back(new Owoce("Banan", 8, 4));
     roslinki.push_back(new Owoce("Truskawka", 8, 6));
-    roslinki.push_back(new Kwiaty("Roza", 5, 10));
+    roslinki.push_back(new Kwiaty("Roza", 5,5));
     roslinki.push_back(new Warzywa("Marchewka", 7, 8));
 
 }
@@ -233,6 +233,23 @@ bool Szklarnia::podaj_odznake()
 {
     return odznaka;
 }
+
+bool Szklarnia::podaj_odkwi()
+{
+    return odkwi;
+}
+
+
+bool Szklarnia::podaj_odow()
+{
+    return odow;
+}
+
+bool Szklarnia::podaj_odwarz()
+{
+    return odwarz;
+}
+
 
 int Szklarnia::podaj_ileakcji()
 {

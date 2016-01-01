@@ -10,7 +10,7 @@ using namespace sf;
 
 Odznaki::Odznaki(void)
 {
-	if(!tekstura1.loadFromFile("sprajty/gracz/kwiatek.jpg"))
+	if(!tekstura1.loadFromFile("sprajty/gracz/kwiatek.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;
@@ -24,7 +24,7 @@ Odznaki::Odznaki(void)
 
 
 
-if(!tekstura2.loadFromFile("sprajty/gracz/owoc.jpg"))
+if(!tekstura2.loadFromFile("sprajty/gracz/owoc.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;
@@ -37,7 +37,7 @@ if(!tekstura2.loadFromFile("sprajty/gracz/owoc.jpg"))
 
 
 
-if(!tekstura3.loadFromFile("sprajty/gracz/warzywko.jpg"))
+if(!tekstura3.loadFromFile("sprajty/gracz/warzywko.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;
@@ -47,7 +47,7 @@ if(!tekstura3.loadFromFile("sprajty/gracz/warzywko.jpg"))
 	sprajt3.setTextureRect(IntRect(0,0,131,160));
 
 
-if(!tekstura4.loadFromFile("sprajty/gracz/odznaka.jpg"))
+if(!tekstura4.loadFromFile("sprajty/gracz/odznaka.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;
@@ -57,12 +57,27 @@ if(!tekstura4.loadFromFile("sprajty/gracz/odznaka.jpg"))
 	sprajt4.setTextureRect(IntRect(0,0,138,97));
 
 
-	sprajt1.setPosition(700,600);
-		sprajt2.setPosition(800,600);
+if(!tekstura5.loadFromFile("sprajty/gracz/puste.png"))
+	{
+		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
+		return;
+	}
 
-                       sprajt3.setPosition(900,600);
+	sprajt5.setTexture(tekstura5);
+	sprajt5.setTextureRect(IntRect(0,0,138,97));
 
-sprajt4.setPosition(1000,600);
+
+	sprajt1.setPosition(680,530);
+		sprajt2.setPosition(770,530);
+        sprajt3.setPosition(890,530);
+
+sprajt4.setPosition(900,530);
+sprajt5.setPosition(710,530);
+
+sprajto1=sprajt5;
+sprajto2=sprajt5;
+sprajto3=sprajt5;
+sprajto4=sprajt5;
 
 }
 
@@ -76,9 +91,37 @@ void Odznaki::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
 
-	target.draw(sprajt1);
-	target.draw(sprajt2);
-	target.draw(sprajt3);
-target.draw(sprajt4);
+	target.draw(sprajto1);
+	target.draw(sprajto2);
+	target.draw(sprajto3);
+target.draw(sprajto4);
 }
 
+void Odznaki::zmienodkwi()
+{
+    sprajto1=sprajt1;
+
+}
+
+
+void Odznaki::zmienodow()
+{
+    sprajto2=sprajt2;
+
+}
+
+
+
+void Odznaki::zmienodwarz()
+{
+    sprajto3=sprajt3;
+
+}
+
+
+
+
+void Odznaki::zmienodznaka()
+{
+   sprajto4=sprajt4;
+}
