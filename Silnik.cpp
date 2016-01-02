@@ -141,8 +141,18 @@ if(szklarnia.podaj_ileakcji()<=0)
 {
     dzien++;
     szklarnia.koniec_dnia();
+    /* switch chyba wygląda bardziej przejrzyście
+    switch(szklarnia.podaj_los()){
+    case 0: {noc.zmientekst(); noc.ruszNoc(okno, m);break;} //dalej wywala, ale nie wiem czemu
+    case 1: {noc.zmientekst2();
+        noc.podstawowy();noc.ruszNoc(okno, m);break;}
+    case 2: {noc.zmientekst3();
+       noc.zmien();noc.ruszNoc(okno, m);break;}
+    case 3: {noc.zmientekst4();
+       noc.zmien2();noc.ruszNoc(okno, m);break;}
+    */
       if(szklarnia.podaj_los()==0)
-       noc.zmientekst();
+       noc.zmientekst(); //tu wywala
        else if(szklarnia.podaj_los()==1)
        {
             noc.zmientekst2();
@@ -236,8 +246,20 @@ if(tekst[2].getGlobalBounds().contains(mysz) &&
 			{
 szklarnia.koniec_dnia();
 dzien++;
+switch(szklarnia.podaj_los()){
+    case 0: {noc.zmientekst(); noc.ruszNoc(okno, m);break;} //dalej wywala, ale nie wiem czemu
+    case 1: {noc.zmientekst2();
+        noc.podstawowy();noc.ruszNoc(okno, m);break;}
+    case 2: {noc.zmientekst3();
+       noc.zmien();noc.ruszNoc(okno, m);break;}
+    case 3: {noc.zmientekst4();
+       noc.zmien2();noc.ruszNoc(okno, m);break;}
+
+}
+//noc.ruszNoc(okno, m);
+/*
 if(szklarnia.podaj_los()==0)
-       noc.zmientekst();
+       noc.zmientekst(); // tylko przy spokojnej nocy wywala
        else if(szklarnia.podaj_los()==1)
        {
             noc.zmientekst2();
@@ -256,7 +278,7 @@ if(szklarnia.podaj_los()==0)
         }
 
 noc.ruszNoc(okno, m);
-
+*/
 			}
 
 if(tekst[3].getGlobalBounds().contains(mysz) &&
