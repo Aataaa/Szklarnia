@@ -10,12 +10,12 @@ Szklarnia::Szklarnia(){
     odwarz=0;
     odow=0;
     odkwi=0;
-
+los=0;
 
     roslinki.push_back(new Owoce("Banan", 8, 4));
     roslinki.push_back(new Owoce("Truskawka", 8, 6));
     roslinki.push_back(new Kwiaty("Roza", 5,5));
-    roslinki.push_back(new Warzywa("Marchewka", 7, 8));
+    roslinki.push_back(new Warzywa("Marchewka", 7, 800));
 
 }
 Szklarnia::~Szklarnia(){}
@@ -142,11 +142,13 @@ void Szklarnia::koniec_dnia(){
         (*iter)->zmien_wzrost(10);
     }
 srand(time(0));
-los=rand()%4;
+los=(rand()%4);
+
 Czynniki *czynniczki;
     switch(los){
-        case 0: break;
-        case 1:{      czynniczki=new Szkodniki;
+        case 0: {break;}
+
+       case 1:{      czynniczki=new Szkodniki;
 
 
             break;
@@ -163,10 +165,14 @@ Czynniki *czynniczki;
             break;
 
         }
+        default: break;
     }
-for( iter=roslinki.begin(); iter != roslinki.end(); ++iter){
+    if(los!=0)
+       {
+           for( iter=roslinki.begin(); iter != roslinki.end(); ++iter){
                 czynniczki->wplyw_na_rosline(*iter);
             }
+       }
 }
 
 

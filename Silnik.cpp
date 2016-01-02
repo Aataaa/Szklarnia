@@ -141,8 +141,7 @@ if(szklarnia.podaj_ileakcji()<=0)
 {
     dzien++;
     szklarnia.koniec_dnia();
-    /* switch chyba wygląda bardziej przejrzyście
-    switch(szklarnia.podaj_los()){
+      switch(szklarnia.podaj_los()){
     case 0: {noc.zmientekst(); noc.ruszNoc(okno, m);break;} //dalej wywala, ale nie wiem czemu
     case 1: {noc.zmientekst2();
         noc.podstawowy();noc.ruszNoc(okno, m);break;}
@@ -150,28 +149,8 @@ if(szklarnia.podaj_ileakcji()<=0)
        noc.zmien();noc.ruszNoc(okno, m);break;}
     case 3: {noc.zmientekst4();
        noc.zmien2();noc.ruszNoc(okno, m);break;}
-    */
-      if(szklarnia.podaj_los()==0)
-       noc.zmientekst(); //tu wywala
-       else if(szklarnia.podaj_los()==1)
-       {
-            noc.zmientekst2();
-        noc.podstawowy();
-       }
-       else if(szklarnia.podaj_los()==2)
-       {
-            noc.zmientekst3();
-       noc.zmien();
-       }
-
-        else  if(szklarnia.podaj_los()==3)
-        {
-             noc.zmientekst4();
-       noc.zmien2();
-        }
-    noc.ruszNoc(okno, m);
+      }
 }
-
 if(szklarnia.podaj_odow()==1)odznaki.zmienodow();
 if(szklarnia.podaj_odkwi()==1)odznaki.zmienodkwi();
 if(szklarnia.podaj_odwarz()==1)odznaki.zmienodwarz();
@@ -214,7 +193,7 @@ if(tekst[0].getGlobalBounds().contains(mysz) &&
 			{
 		switch(ktora_roslina)
 		{
-		case 0: break;
+
 		case 1:szklarnia.podlewanie_roslin(0); break;
 		case 2:szklarnia.podlewanie_roslin(1); break;
 		case 3:szklarnia.podlewanie_roslin(2); break;
@@ -230,7 +209,7 @@ if(tekst[1].getGlobalBounds().contains(mysz) &&
 			{
 switch(ktora_roslina)
 		{
-		case 0: break;
+
 		case 1:szklarnia.nawozenie_roslin(0); break;
 		case 2:szklarnia.nawozenie_roslin(1); break;
 		case 3:szklarnia.nawozenie_roslin(2); break;
@@ -244,42 +223,22 @@ switch(ktora_roslina)
 if(tekst[2].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
-szklarnia.koniec_dnia();
+
 dzien++;
-switch(szklarnia.podaj_los()){
-    case 0: {noc.zmientekst(); noc.ruszNoc(okno, m);break;} //dalej wywala, ale nie wiem czemu
+szklarnia.koniec_dnia();
+  switch(szklarnia.podaj_los()){
+   case 0: {noc.zmientekst(); noc.ruszNoc(okno, m);break;} //dalej wywala, ale nie wiem czemu
     case 1: {noc.zmientekst2();
         noc.podstawowy();noc.ruszNoc(okno, m);break;}
     case 2: {noc.zmientekst3();
        noc.zmien();noc.ruszNoc(okno, m);break;}
     case 3: {noc.zmientekst4();
        noc.zmien2();noc.ruszNoc(okno, m);break;}
+       default: break;
+      }
 
 }
-//noc.ruszNoc(okno, m);
-/*
-if(szklarnia.podaj_los()==0)
-       noc.zmientekst(); // tylko przy spokojnej nocy wywala
-       else if(szklarnia.podaj_los()==1)
-       {
-            noc.zmientekst2();
-        noc.podstawowy();
-       }
-       else if(szklarnia.podaj_los()==2)
-       {
-            noc.zmientekst3();
-       noc.zmien();
-       }
 
-        else  if(szklarnia.podaj_los()==3)
-        {
-             noc.zmientekst4();
-       noc.zmien2();
-        }
-
-noc.ruszNoc(okno, m);
-*/
-			}
 
 if(tekst[3].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
@@ -350,4 +309,16 @@ okno.draw(tekstodzn);
 
 		okno.display();
 	}
+	if(szklarnia.podaj_odznake()==1)
+    {
+        koniec.podstawowy();
+        koniec.zmientekst2();
+        koniec.ruszKoniec(okno, m);
+    }
+    if(szklarnia.podaj_zycie()==0)
+    {
+        koniec.zmien();
+        koniec.zmientekst();
+        koniec.ruszKoniec(okno, m);
+    }
 }

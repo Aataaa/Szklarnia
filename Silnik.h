@@ -4,7 +4,7 @@
 
  #include "Muzyka.h"
 #include "Postac.h"
-
+#include "Koniec.h"
 #include "Uprawa.h"
 #include "Akcje.h"
 #include "Noc.h"
@@ -31,7 +31,10 @@ private:
 	Muzyka muzyka;
 Noc noc;
 Odznaki odznaki;
+Koniec koniec;
 	 Szklarnia szklarnia;
+
+
 
 	 Font czcionka;
 
