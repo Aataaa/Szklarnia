@@ -41,6 +41,8 @@ Koniec koniec;
 
 	sf::Texture tlogry;
 	sf::Sprite sprajttlo;
+	sf::Texture dodaj;
+	sf::Sprite sprajtdodaj;
 	string nazwa;
        int wzrost;
        int zdrowie;

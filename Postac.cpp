@@ -61,10 +61,14 @@ if(!tekstura4.loadFromFile("sprajty/gracz/1a.png"))
 	klatka = 0;
 	szybkosc= 3.5;
 
-	sprajt1.setPosition(800,0);
-		sprajt2.setPosition(800,0);
-                      sprajt3.setPosition(800,0);
-                       sprajt4.setPosition(800,0);
+	sprajt1.setPosition(850,150);
+	   sprajt1.setScale(0.9, 0.9);
+		sprajt2.setPosition(850,150);
+		  sprajt2.setScale(0.9, 0.9);
+                      sprajt3.setPosition(850,150);
+                        sprajt3.setScale(0.9, 0.9);
+                       sprajt4.setPosition(850,150);
+                         sprajt4.setScale(0.9, 0.9);
                       sprajt=sprajt1;
 	zegar.restart();
 }
@@ -104,7 +108,7 @@ void Postac::aktualizuj()
             klatka = 0;         }
 
 		sprajt.setTextureRect(IntRect(klatka*524,0,496,694));
-							
+
 
 
 		zegar.restart();
@@ -113,7 +117,7 @@ void Postac::aktualizuj()
 
 void Postac::podstawowy()
 {
-	
+
 
 	sprajt=sprajt1;
 }
@@ -122,7 +126,7 @@ void Postac::podstawowy()
 
 void Postac::szpadel()
 {
-   
+
 	sprajt=sprajt2;
 
 
@@ -131,7 +135,7 @@ void Postac::szpadel()
 
 void Postac::owoce()
 {
-    
+
 	sprajt=sprajt3;
 
 

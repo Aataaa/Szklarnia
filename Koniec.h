@@ -10,6 +10,8 @@
 #include <vector>
 #include <string>
  #include "Muzyka.h"
+ #include "Odznaki.h"
+
 
 class Koniec
 
@@ -41,6 +43,7 @@ std::string str2;
 
 	Font czcionka;
 Muzyka muzyka;
+Odznaki odznaki;
 	bool sciszanie;
 
 

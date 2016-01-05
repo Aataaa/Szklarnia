@@ -25,7 +25,7 @@ Noc::Noc()
 	sprajt2.setTexture(tekstura2);
 	sprajt2.setTextureRect(IntRect(0,0,537,308));
 
- if(!tekstura3.loadFromFile("sprajty/gracz/11.png"))
+ if(!tekstura3.loadFromFile("sprajty/gracz/ch2.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;

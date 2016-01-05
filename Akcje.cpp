@@ -49,11 +49,12 @@ if(!tekstura3.loadFromFile("sprajty/gracz/7.png"))
 
 
 
-
-	sprajt1.setPosition(-200,-200);
-		sprajt2.setPosition(50,-200);
-
-                       sprajt3.setPosition(300,-200);
+   sprajt1.setScale(0.8, 0.8);
+	sprajt1.setPosition(-150,-150);
+	   sprajt2.setScale(0.8, 0.8);
+		sprajt2.setPosition(50,-150);
+		   sprajt3.setScale(0.8, 0.8);
+           sprajt3.setPosition(250,-150);
 
 
 

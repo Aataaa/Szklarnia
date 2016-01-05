@@ -52,7 +52,7 @@ void Koniec::podstawowy()
 {
 	sprajt=sprajt1;
 
-
+odznaki.zmienodznaka();
 }
 
 
@@ -145,6 +145,7 @@ if(zdarzenie.type == Event::KeyReleased && zdarzenie.key.code == Keyboard::Escap
 
 okno.clear();
 okno.draw(sprajttlo);
+okno.draw(odznaki);
 okno.draw(tekst);
 okno.draw(tekst2);
 okno.draw(sprajt);
