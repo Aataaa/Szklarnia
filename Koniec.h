@@ -40,7 +40,9 @@ sf::Texture tekstura1;
 std::string str;
 std::string str1;
 std::string str2;
-
+std::string strr;
+std::string str3;
+std::string str4;
 	Font czcionka;
 Muzyka muzyka;
 Odznaki odznaki;

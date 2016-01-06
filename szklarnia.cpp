@@ -12,10 +12,10 @@ Szklarnia::Szklarnia(){
     odkwi=0;
 los=0;
 
-    roslinki.push_back(new Owoce("Banan", 8, 4));
+    roslinki.push_back(new Owoce("Banan", 3, 4));
     roslinki.push_back(new Owoce("Truskawka", 8, 6));
-    roslinki.push_back(new Kwiaty("Roza", 5,5));
-    roslinki.push_back(new Warzywa("Marchewka", 7, 800));
+    roslinki.push_back(new Kwiaty("Roza", 5,500));
+    roslinki.push_back(new Warzywa("Marchewka", 7, 8));
 
 }
 Szklarnia::~Szklarnia(){}
@@ -26,7 +26,7 @@ void Szklarnia::zasadz_rosline(Rosliny* roslinka)
 }
 
 
-
+/*
 
 void Szklarnia::usun_rosline(Rosliny* roslinka)
 {
@@ -35,7 +35,7 @@ void Szklarnia::usun_rosline(Rosliny* roslinka)
     if (*iter == roslinka)
     iter=roslinki.erase(iter);
 }
-
+*/
 int Szklarnia::podaj_elementy()
 {
     return roslinki.size();
@@ -110,6 +110,17 @@ if(n==-1)return 0;
 
 }
 
+int Szklarnia::opis7(int n)
+{
+if(n==-1)return 0;
+ std::list<Rosliny*>::iterator iter = roslinki.begin();
+        if(n>0) {
+            advance(iter, n);
+        }
+       return (*iter)->czy_zyje();
+
+
+}
 
 
 
@@ -205,29 +216,29 @@ void Szklarnia::stan_roslin(){
     for( iter=roslinki.begin(); iter != roslinki.end(); ++iter){
         if((*iter)->podaj_wode()<=0) {
             (*iter)->gnije();
-            //usun_rosline(*iter);
+
         }
 
         if((*iter)->podaj_wzrost()<=0){
             (*iter)->gnije();
-           // usun_rosline((*iter));
+
         }
 
         if((*iter)->podaj_zdrowie()<=0){
             (*iter)->gnije();
-           // usun_rosline((*iter));
+
         }
 
         if((*iter)->podaj_wode()>100){
             (*iter)->gnije();
-           // usun_rosline((*iter));
+
         }
     }
    for( iter=roslinki.begin(); iter != roslinki.end(); ++iter){
        if((*iter)->czy_zyje()==0) {licznik++;}
        if (licznik==roslinki.size()) zycie=0;
     }
-   // licznik=0;
+    licznik=0;
 }
 
 bool Szklarnia::podaj_zycie()

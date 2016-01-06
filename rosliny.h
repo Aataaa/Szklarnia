@@ -9,12 +9,13 @@ class Rosliny
 
             std::string nazwa;
             int wzrost;
-             int nawodnienie;
+
             int zdrowie;
              bool zyje;
 protected:
 
             int klasa;
+             int nawodnienie;
 
       public:
 

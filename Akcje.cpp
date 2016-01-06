@@ -37,7 +37,7 @@ if(!tekstura2.loadFromFile("sprajty/gracz/10.png"))
 
 
 
-if(!tekstura3.loadFromFile("sprajty/gracz/7.png"))
+if(!tekstura3.loadFromFile("sprajty/gracz/7a.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;

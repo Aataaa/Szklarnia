@@ -6,7 +6,7 @@ Noc::Noc()
 {
 
 
-    if(!tekstura1.loadFromFile("sprajty/gracz/n2.png"))
+    if(!tekstura1.loadFromFile("sprajty/gracz/n3.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;

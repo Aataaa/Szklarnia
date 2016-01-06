@@ -67,11 +67,11 @@ if(!tekstura5.loadFromFile("sprajty/gracz/puste.png"))
 	sprajt5.setTextureRect(IntRect(0,0,138,97));
 
 
-	sprajt1.setPosition(1040,30);
-		sprajt2.setPosition(1070,30);
-        sprajt3.setPosition(1100,30);
+	sprajt1.setPosition(980,30);
+		sprajt2.setPosition(1040,30);
+        sprajt3.setPosition(1090,30);
 
-sprajt4.setPosition(500,330);
+sprajt4.setPosition(1070,40);
 sprajt5.setPosition(710,530);
 
 sprajto1=sprajt5;

@@ -36,9 +36,18 @@ int licznikkwiat=0;
 	bool menu = false;
 int ktora_roslina=0;
 int licznik_tekstu=0;
-int i1=7;
-int i2=7;
-int i3=7;
+
+int i0=3;
+int i1=4;
+int i2=5;
+int i3=6;
+int i4=7;
+int i5=7;
+int i6=7;
+int i7=7;
+int i8=7;
+int i9=7;
+
 muzyka.ladujmuzyke(false);
 
 muzyka.puscmuzyke();
@@ -80,7 +89,7 @@ sprajtdodaj.setPosition(950,500);
 
 
 int ilewybor=7;
-string wybor[]={" ","Rzodkiew ", "Papryka ", "Pomarancza ", "Gruszka ", "Slonecznik", "Stokrotka"};
+string wybor[]={"","Rzodkiew ", "Papryka ", "Pomarancza ", "Gruszka ", "Slonecznik", "Stokrotka"};
 Text jakaroslina[ilewybor];
 	for(int n=0;n<ilewybor;n++)
 	{
@@ -121,12 +130,12 @@ Text jakaroslina[ilewybor];
         if(i<3)
         {
             tekst[i].setCharacterSize(40);
-            tekst[i].setPosition(50+i*200, 350);
+            tekst[i].setPosition(50+i*200, 300);
         }
 		else
         {
             tekst[i].setCharacterSize(20);
-            tekst[i].setPosition(50+(i-3)*110, 520);
+            tekst[i].setPosition(50+(i-3)*90, 500);
         }
 
 
@@ -156,9 +165,9 @@ tekstodzn.setColor( sf::Color::Black );
 
 
 
-string typ[]={"Roslina", "Owoc", "Kwiat", "Warzywo"};
+string typ[]={"Roslina", "Kwiat", "Owoc", "Warzywo"};
 
-int ile2=7;
+int ile2=8;
 Text tekst2[ile2];
 string str2[] = {    "Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n warzyw , owocow i kwiatow. \nPowodzenia!",
 "Jesli chcesz podlac lub nawiezc rosline, \nkliknij na wybrana rosline, \na potem na podlej lub nawiez. \nMozesz takze zakonczyc dzien. \nPamietaj, ze liczba akcji jest ograniczona!",
@@ -167,6 +176,7 @@ string str2[] = {    "Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin
 "Roslina:"+szklarnia.opis(ktora_roslina-1)+" Typ: "+typ[szklarnia.opis6(ktora_roslina-1)]+"\nWoda: "+naString(szklarnia.opis2(ktora_roslina-1))+" Wzrost: "+naString(szklarnia.opis3(ktora_roslina-1))+
 "\nZdrowie: "+naString(szklarnia.opis4(ktora_roslina-1))+"Cecha: "+naString(szklarnia.opis5(ktora_roslina-1)),
 "Masz:"+naString(szklarnia.podaj_elementy())+" roslin",
+"Licznik warzywo:"+naString(licznikwarzywo)+" kwiat: "+naString(licznikkwiat)+"owoc: "+naString(licznikowoc),
 "Masz do wyboru 2 warzywa, 2 kwiaty i \n2 owoce. Mozesz posadzic 1 roslne kazdego rodzaju."
 
 };
@@ -189,7 +199,8 @@ for(int j=0;j<ile2;j++)
         }
 
 
-
+szklarnia.stan_roslin();
+szklarnia.wygrana();
 
 
 if(szklarnia.podaj_ileakcji()<=0)
@@ -210,7 +221,33 @@ if(szklarnia.podaj_odow()==1)odznaki.zmienodow();
 if(szklarnia.podaj_odkwi()==1)odznaki.zmienodkwi();
 if(szklarnia.podaj_odwarz()==1)odznaki.zmienodwarz();
 
+for(int n=1; n<=szklarnia.podaj_elementy();n++)
+{
+    if(szklarnia.opis7(n-1)==0)
+    {
+            if(n==1){i0=7; uprawa.umiera(n);}
+        else if(n==2){i1=7;uprawa.umiera(n);}
+       else if(n==3){i2=7;uprawa.umiera(n);}
+       else if(n==4){i3=7;uprawa.umiera(n);}
+        else if(n==licznikwarzywo){i4=7; i5=7;uprawa.umiera(5);}
+       else if(n==licznikowoc){i6=7; i7=7;uprawa.umiera(6);}
+        else if(n==licznikkwiat){i8=7; i9=7;uprawa.umiera(7);}
 
+    //lepiej switch ale nie mo¿na przyrownac do licznikow ;/
+        /*
+        switch(n){
+        case 0: {i0=7; uprawa.umiera(n);break;}
+    case 1: {i1=7;uprawa.umiera(n); break;}
+    case 2: {i2=7;uprawa.umiera(n);break;}
+    case 3: {i3=7;uprawa.umiera(n);break;}
+   case licznikwarzywo: {i4=7; i5=7;uprawa.umiera(n);break;}
+    case licznikowoc: {i6=7; i7=7;uprawa.umiera(n);break;}
+    case licznikkwiat: {i8=7; i9=7;uprawa.umiera(n);break;}
+
+        }
+        */
+}
+}
 
 
 		Event zdarzenie;
@@ -335,14 +372,6 @@ ktora_roslina=4;
 
 			}
 
-if(tekst[7].getGlobalBounds().contains(mysz) &&
-				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
-			{
-ktora_roslina=licznikwarzywo;
-
-			}
-
-
 if(tekst[8].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
@@ -351,13 +380,13 @@ ktora_roslina=licznikwarzywo;
 			}
 
 
-
 if(tekst[9].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
-ktora_roslina=licznikowoc;
+ktora_roslina=licznikwarzywo;
 
 			}
+
 
 
 if(tekst[10].getGlobalBounds().contains(mysz) &&
@@ -366,7 +395,15 @@ if(tekst[10].getGlobalBounds().contains(mysz) &&
 ktora_roslina=licznikowoc;
 
 			}
+
+
 if(tekst[11].getGlobalBounds().contains(mysz) &&
+				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
+			{
+ktora_roslina=licznikowoc;
+
+			}
+if(tekst[12].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
 ktora_roslina=licznikkwiat;
@@ -374,7 +411,7 @@ ktora_roslina=licznikkwiat;
 			}
 
 
-if(tekst[12].getGlobalBounds().contains(mysz) &&
+if(tekst[13].getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
 ktora_roslina=licznikkwiat;
@@ -401,7 +438,7 @@ uprawa.rzodkiew();
 Rosliny *warzywko= new Warzywa("Rzodkiewka",(rand()%5)+4 , (rand()%2)+5);
 szklarnia.zasadz_rosline(warzywko);
 licznikwarzywo=szklarnia.podaj_elementy();
-i1=8;
+i4=8;
 
 			}
 
@@ -412,7 +449,7 @@ uprawa.papryka();
 Rosliny *warzywko= new Warzywa("Papryka",(rand()%2)+3 , (rand()%7)+7);
 szklarnia.zasadz_rosline(warzywko);
 licznikwarzywo=szklarnia.podaj_elementy();
-i1=9;
+i5=9;
 			}
 
 
@@ -423,7 +460,7 @@ uprawa.pomarancza();
 Rosliny *owocek= new Owoce("Pomarancza",(rand()%5)+8 , (rand()%3)+1);
 szklarnia.zasadz_rosline(owocek);
 licznikowoc=szklarnia.podaj_elementy();
-i2=10;
+i6=10;
 			}
 
 		   if(jakaroslina[4].getGlobalBounds().contains(mysz) &&
@@ -433,7 +470,7 @@ uprawa.gruszka();
 Rosliny *owocek= new Owoce("Gruszka",(rand()%4)+1 , (rand()%3)+9);
 szklarnia.zasadz_rosline(owocek);
 licznikowoc=szklarnia.podaj_elementy();
-i2=11;
+i7=11;
 		}
 
 			   if(jakaroslina[5].getGlobalBounds().contains(mysz) &&
@@ -443,7 +480,7 @@ uprawa.slonecznik();
 Rosliny *kwiatek= new Kwiaty("Slonecznik",(rand()%9)+6 , (rand()%4)+2);
 szklarnia.zasadz_rosline(kwiatek);
 licznikkwiat=szklarnia.podaj_elementy();
-i3=12;
+i8=12;
 			}
 
 
@@ -455,7 +492,7 @@ uprawa.stokrotka();
 Rosliny *kwiatek= new Kwiaty("Stokrotka",(rand()%5)+1 , (rand()%8)+7);
 szklarnia.zasadz_rosline(kwiatek);
 licznikkwiat=szklarnia.podaj_elementy();
-i3=13;
+i9=13;
 			}
 
 
@@ -473,8 +510,7 @@ i3=13;
 
 
 		}
-szklarnia.stan_roslin();
-szklarnia.wygrana();
+
 for(int i=0;i<ile;i++)
 			if(tekst[i].getGlobalBounds().contains(mysz))
 			{
@@ -501,14 +537,22 @@ okno.draw(sprajttlo);
 			postac.aktualizuj();
 			okno.draw(akcje);
 				okno.draw(uprawa);
-			for(int i=0;i<ile-6;i++)
-            {
 
-            okno.draw(tekst[i]);
-            }
- okno.draw(tekst[i1]);
+for(int i=0; i<3; i++)
+    okno.draw(tekst[i]);
+
+okno.draw(tekst[i0]);
+           okno.draw(tekst[i1]);
   okno.draw(tekst[i2]);
  okno.draw(tekst[i3]);
+  okno.draw(tekst[i4]);
+  okno.draw(tekst[i5]);
+ okno.draw(tekst[i6]);
+   okno.draw(tekst[i7]);
+ okno.draw(tekst[i8]);
+   okno.draw(tekst[i9]);
+
+
 
 			okno.draw(ramka);
 				okno.draw(ramkaodzn);

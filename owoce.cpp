@@ -9,6 +9,7 @@ Owoce::Owoce(string nazwa, int wzrost, int slodkosc) : Rosliny(nazwa, wzrost)
 {
     this->slodkosc=slodkosc;
     klasa=2;
+    nawodnienie=50;
 }
 
 Owoce:: ~Owoce() {}

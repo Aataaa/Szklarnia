@@ -18,7 +18,7 @@ Koniec::Koniec()
 	sprajt1.setTextureRect(IntRect(0,0,607,694));
 
 
-    if(!tekstura2.loadFromFile("sprajty/gracz/6.png"))
+    if(!tekstura2.loadFromFile("sprajty/gracz/6a.png"))
 	{
 		MessageBox(NULL,"Nie znaleziono tekstur","Blad",NULL);
 		return;
@@ -36,8 +36,13 @@ Koniec::Koniec()
 
 
 str1="Przegrana";
-str2="Wygrana";
+str2="Wygrana!";
+str3="Zmarly wszystkie twoje rosliny!";
+str4="Twoje rosliny pieknie urosly, dostajesz odznake super ogrodnika!";
 str=str2;
+strr=str4;
+
+
 
 }
 
@@ -67,10 +72,12 @@ void Koniec::zmien()
 void Koniec::zmientekst()
 {
 	str=str1;
+	strr=str3;
 }
 void Koniec::zmientekst2()
 {
 	str=str2;
+	strr=str4;
 }
 
 
@@ -105,6 +112,26 @@ if(!czcionka.loadFromFile("sprajty/czcionki/Szklarnia.ttf"))
 sprajttlo.setTexture(tlo);
 sprajttlo.setScale(5, 5);
 
+
+
+sf::RectangleShape ramkaodzn(sf::Vector2f(300,160));
+ramkaodzn.setPosition(970, 7);
+ramkaodzn.setFillColor(sf::Color::White);
+ramkaodzn.setOutlineThickness(10);
+ramkaodzn.setOutlineColor(sf::Color(250, 150, 100));
+
+
+Text tekstodzn;
+tekstodzn.setFont(czcionka);
+tekstodzn.setString("Odznaka super ogrodnika: ");
+tekstodzn.setCharacterSize(25);
+tekstodzn.setPosition(975, 10);
+tekstodzn.setColor( sf::Color::Black );
+
+
+
+
+
 Text tekst;
 
 
@@ -113,20 +140,33 @@ Text tekst;
 		tekst.setCharacterSize(95);
 
 		tekst.setString("Koniec gry");
-		tekst.setPosition(450, 50);
+		tekst.setPosition(480, 50);
 
 
-Text tekst2;
+Text tekst2[2];
 
 
 
 
-		tekst2.setFont(czcionka);
-		tekst2.setCharacterSize(95);
+		tekst2[0].setFont(czcionka);
+		tekst2[0].setCharacterSize(95);
 
-		tekst2.setString(str);
-		tekst2.setPosition(460, 200);
+		tekst2[0].setString(str);
+		tekst2[0].setPosition(500, 150);
 
+
+		tekst2[1].setFont(czcionka);
+		tekst2[1].setCharacterSize(45);
+
+		tekst2[1].setString(strr);
+		if(strr==str3)
+        {
+            tekst2[1].setPosition(450, 250);
+        }
+        else if(strr==str4)
+        {
+         tekst2[1].setPosition(200, 250);
+        }
 
 
 		Event zdarzenie;
@@ -145,13 +185,15 @@ if(zdarzenie.type == Event::KeyReleased && zdarzenie.key.code == Keyboard::Escap
 
 okno.clear();
 okno.draw(sprajttlo);
-okno.draw(odznaki);
+
+for(int i=0; i<2; i++)
+okno.draw(tekst2[i]);
 okno.draw(tekst);
-okno.draw(tekst2);
 okno.draw(sprajt);
+okno.draw(ramkaodzn);
+okno.draw(tekstodzn);
 
-
-
+okno.draw(odznaki);
 		okno.display();
 
 	}

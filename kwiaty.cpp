@@ -7,6 +7,7 @@ Kwiaty::Kwiaty(string nazwa, int wzrost, int piekno) : Rosliny(nazwa, wzrost)
 {
     this->piekno=piekno;
     klasa=1;
+    nawodnienie=20;
 }
 
 Kwiaty::~Kwiaty() {}

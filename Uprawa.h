@@ -25,7 +25,7 @@ public:
 	void gruszka();
 	void slonecznik();
 	void stokrotka();
-
+void umiera(int n);
 
 
 private:

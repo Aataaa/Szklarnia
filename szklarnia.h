@@ -48,6 +48,7 @@ int los;
            int opis3(int n);
             int opis4(int n);
           int opis5(int n);
+           int opis7(int n);
          int podaj_elementy();
 };
 

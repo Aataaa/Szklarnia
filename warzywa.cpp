@@ -8,6 +8,7 @@ using namespace std;
 Warzywa::Warzywa(string nazwa,int wzrost, int witaminy) : Rosliny(nazwa, wzrost){
     this->witaminy=witaminy;
     klasa=3;
+    nawodnienie=35;
 }
 
 Warzywa::~Warzywa() {}
