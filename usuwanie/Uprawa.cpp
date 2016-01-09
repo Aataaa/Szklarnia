@@ -228,13 +228,13 @@ void Uprawa::umiera(int n)
 {
 switch(n)
 {
-    case 1: sprajt1=sprajt11; break;
-		case 2:sprajt2=sprajt11; break;
-		case 3:sprajt3=sprajt11; break;
-		case 4:sprajt4=sprajt11; break;
-		case 5:sprajtr=sprajt11; break;
-		case 6:sprajtr1=sprajt11; break;
-		case 7:sprajtr2=sprajt11; break;
+    case 0: sprajt1=sprajt11; break;
+		case 1:sprajt2=sprajt11; break;
+		case 2:sprajt3=sprajt11; break;
+		case 3:sprajt4=sprajt11; break;
+		case 4:sprajtr=sprajt11; break;
+		case 5:sprajtr1=sprajt11; break;
+		case 6:sprajtr2=sprajt11; break;
 }
 
 

@@ -36,7 +36,7 @@ int licznikkwiat=0;
 bool menu = false;
 int ktora_roslina=0;
 int licznik_tekstu=0;
-int ilosczgnilych=0;
+bool czy_zyje[10];
 
 int i0=3;
 int i1=4;
@@ -86,17 +86,7 @@ sprajtdodaj.setTextureRect(IntRect(0,0,577,574));
 sprajtdodaj.setScale(0.4, 0.4);
 sprajtdodaj.setPosition(1150,500);
 
-   if(!strzalka.loadFromFile("sprajty/gracz/strzalka.png"))
-	{
-		MessageBox(NULL,"Nie znaleziono tekstury","Blad",NULL);
-		return;
-	}
 
-sprajtstrzalka.setTexture(strzalka);
-
-sprajtstrzalka.setTextureRect(IntRect(0,0,500,473));
-sprajtstrzalka.setScale(0.2, 0.2);
-sprajtstrzalka.setPosition(620,390);
 
 
 int ilewybor=7;
@@ -124,7 +114,7 @@ Text jakaroslina[ilewybor];
 
  int ile=14;
   Text tekst[ile];
-	string str[] = {"Podlej","Nawiez", "Noc", "Banan", "Truskawka", "Kwiat", "Marchewka"};
+	string str[] = {"Podlej","Nawiez", "Noc", "Banan", "Truskawka", "Roza", "Marchewka"};
 	for(int i=0;i<ile;i++)
 	{
 	    int zmienna=i;
@@ -191,7 +181,7 @@ string typ[]={"Roslina", "Kwiat", "Owoc", "Warzywo"};
 
 int ile2=9;
 Text tekst2[ile2];
-string str2[] = {    "Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n warzyw , owocow i kwiatow.\nAby przewinac, klinkij na strzalke. \nPowodzenia!",
+string str2[] = {    "Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin:\n warzyw , owocow i kwiatow. \nPowodzenia!",
 "Jesli bedziesz zle zajmowac sie\ndana roslina, zgnije. \nJesli wszystkie Twoje \nrosliny zgnija, przegrasz.",
 "Aby wygrac, musisz zdobyc odznake \nSuper Ogrodnika. Dostaniesz ja, jesli \ndostaniesz odznaki Kwiat, Owoc i \nWarzywo. Kazda z nich mozesz otrzymac \njesli jedno z twoich kwiatow \nowocow i warzyw rosnie wyjatkowo \ndobrze",
 "Jesli chcesz podlac lub nawiezc rosline, \nkliknij na wybrana rosline, \na potem na podlej lub nawiez. \nMozesz takze zakonczyc dzien. \nPamietaj, ze liczba akcji jest \nograniczona!",
@@ -199,7 +189,7 @@ string str2[] = {    "Witaj w symulacji szklarni \nPielegnuj 4 lub wiecej roslin
 "dzien:"+naString(dzien)+"\nakcje: "+naString(szklarnia.podaj_ileakcji()),
 "Roslina:"+szklarnia.opis_nazwa(ktora_roslina-1)+" Typ: "+typ[szklarnia.opis_klasa(ktora_roslina-1)]+"\nWoda: "+naString(szklarnia.opis_woda(ktora_roslina-1))+" Wzrost: "+naString(szklarnia.opis_wzrost(ktora_roslina-1))+
 "\nZdrowie: "+naString(szklarnia.opis_zdrowie(ktora_roslina-1))+"Cecha: "+naString(szklarnia.opis_cecha(ktora_roslina-1)),
-"Masz:"+naString(szklarnia.podaj_elementy()-szklarnia.opis_smierc())+" roslin, zgnilo: "+naString(szklarnia.opis_smierc()),
+"Masz:"+naString(szklarnia.podaj_elementy())+" roslin",
 "Masz do wyboru 2 warzywa, 2 kwiaty i \n2 owoce. Mozesz posadzic 1 roslne \nkazdego rodzaju."
 
 };
@@ -243,34 +233,39 @@ if(szklarnia.podaj_odznake_o()==1)odznaki.zmien_odznake_o();
 if(szklarnia.podaj_odznake_k()==1)odznaki.zmien_oznake_k();
 if(szklarnia.podaj_odznake_w()==1)odznaki.zmien_odznake_w();
 
-for(int n=1; n<=szklarnia.podaj_elementy();n++)
+
+for(int n=0; n<10;n++)
 {
-    if(szklarnia.opis_zycie(n-1)==0)
-    {
+czy_zyje[n]=0;
+  }
 
-       if(n==1){i0=7; uprawa.umiera(n);}
-        else if(n==2){i1=7;uprawa.umiera(n);}
-       else if(n==3){i2=7;uprawa.umiera(n);}
-       else if(n==4){i3=7;uprawa.umiera(n);}
-        else if(n==licznikwarzywo){i4=7; i5=7;uprawa.umiera(5);}
-       else if(n==licznikowoc){i6=7; i7=7;uprawa.umiera(6);}
-        else if(n==licznikkwiat){i8=7; i9=7;uprawa.umiera(7);}
 
-    //lepiej switch ale nie mo¿na przyrownac do licznikow ;/
-        /*
-        switch(n){
-        case 0: {i0=7; uprawa.umiera(n);break;}
-    case 1: {i1=7;uprawa.umiera(n); break;}
-    case 2: {i2=7;uprawa.umiera(n);break;}
-    case 3: {i3=7;uprawa.umiera(n);break;}
-   case licznikwarzywo: {i4=7; i5=7;uprawa.umiera(n);break;}
-    case licznikowoc: {i6=7; i7=7;uprawa.umiera(n);break;}
-    case licznikkwiat: {i8=7; i9=7;uprawa.umiera(n);break;}
-
-        }
-        */
+for(int n=0; n<szklarnia.podaj_elementy();n++)
+{
+   if(szklarnia.opis_nazwa(n)=="Banan") czy_zyje[0]=1;
+   if(szklarnia.opis_nazwa(n)== "Truskawka") czy_zyje[1]=1;
+   if(szklarnia.opis_nazwa(n)=="Roza") czy_zyje[2]=1;
+   if(szklarnia.opis_nazwa(n)== "Marchewka") czy_zyje[3]=1;
+   if(szklarnia.opis_nazwa(n)=="Rzodkiewka") czy_zyje[4]=1;
+   if(szklarnia.opis_nazwa(n)=="Papryka") czy_zyje[5]=1;
+   if(szklarnia.opis_nazwa(n)=="Pomarancza") czy_zyje[6]=1;
+   if(szklarnia.opis_nazwa(n)=="Gruszka") czy_zyje[7]=1;
+   if(szklarnia.opis_nazwa(n)=="Slonecznik") czy_zyje[8]=1;
+   if(szklarnia.opis_nazwa(n)=="Stokrotka") czy_zyje[9]=1;
 }
-}
+
+
+if(czy_zyje[0]==0){i0=7; uprawa.umiera(0);}
+if(czy_zyje[1]==0){i1=7;uprawa.umiera(1);}
+if(czy_zyje[2]==0){i2=7;uprawa.umiera(2);}
+if(czy_zyje[3]==0){i3=7;uprawa.umiera(3);}
+if(czy_zyje[4]==0 && czy_zyje[5]==0){i4=7; i5=7;uprawa.umiera(4);}
+if(czy_zyje[6]==0 &&czy_zyje[7]==0){i6=7; i7=7;uprawa.umiera(5);}
+if(czy_zyje[8]==0 &&czy_zyje[9]==0){i6=7; i7=7;uprawa.umiera(6);}
+
+
+
+
 
 
 		Event zdarzenie;
@@ -280,7 +275,7 @@ for(int n=1; n<=szklarnia.podaj_elementy();n++)
 		{
 
 
-if(sprajtstrzalka.getGlobalBounds().contains(mysz) &&
+if(ramka.getGlobalBounds().contains(mysz) &&
 				zdarzenie.type == Event::MouseButtonReleased && zdarzenie.key.code == Mouse::Left)
 			{
 		if(licznik_tekstu<ile2-2)
@@ -582,7 +577,6 @@ okno.draw(tekst[i0]);
 okno.draw(odznaki);
 
 			okno.draw(sprajtdodaj);
-				okno.draw(sprajtstrzalka);
 
 if(czydodaj==1)
 {

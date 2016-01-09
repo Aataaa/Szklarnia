@@ -1,7 +1,6 @@
-
 #pragma once
 
- #include "Muzyka.h"
+
 
 
 
@@ -10,26 +9,26 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include <string>
+ #include "Muzyka.h"
+ #include "Odznaki.h"
 
-class Noc
+
+class Koniec
 
 {
 public:
-	Noc();
-	~Noc(void);
+	Koniec();
+	~Koniec(void);
 
 
-void ruszNoc (sf::RenderWindow &okno, bool m);
-
-
-
-	void aktualizuj();
-
+void ruszKoniec (sf::RenderWindow &okno, bool m);
 
 	void zmien();
 void podstawowy();
-	void zmien2();
-	void zmien3();
+void zmientekst();
+void zmientekst2();
+
+
 
 private:
 	sf::Sprite sprajt;
@@ -37,28 +36,23 @@ private:
 sf::Texture tekstura1;
 	sf::Sprite sprajt2;
 	sf::Texture tekstura2;
-		sf::Sprite sprajt3;
-	sf::Texture tekstura3;
-			sf::Sprite sprajt4;
-	sf::Texture tekstura4;
+
 std::string str;
 std::string str1;
 std::string str2;
+std::string strr;
 std::string str3;
 std::string str4;
 	Font czcionka;
 Muzyka muzyka;
+Odznaki odznaki;
 	bool sciszanie;
 
 
 	sf::Texture tlo;
 	sf::Sprite sprajttlo;
 
-	float szybkosc;
-	size_t klatka;
 
-	sf::Clock zegar;
-	sf::Clock zegar2;
-//void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+
 
 };

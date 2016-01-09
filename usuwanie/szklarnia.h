@@ -23,13 +23,15 @@ class Szklarnia
 bool odznaka_o;
 bool odznaka_k;
 int los;
+bool *tablica;
+
 
               std::list <Rosliny*> roslinki;
       public:
              Szklarnia();
              ~Szklarnia();
             void zasadz_rosline(Rosliny* roslinka);
-            //     void usun_rosline(Rosliny* roslinka);
+                void usun_rosline(Rosliny* roslinka);
             void koniec_dnia();
             void stan_roslin();
             void podlewanie_roslin(int numer);
@@ -48,8 +50,7 @@ int los;
            int opis_zdrowie(int n);
             int opis_cecha(int n);
           int opis_klasa(int n);
-           int opis_zycie(int n);
-           int opis_smierc();
+
          int podaj_elementy();
 };
 

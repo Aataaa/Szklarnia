@@ -43,8 +43,6 @@ Koniec koniec;
 	sf::Sprite sprajttlo;
 	sf::Texture dodaj;
 	sf::Sprite sprajtdodaj;
-	sf::Texture strzalka;
-	sf::Sprite sprajtstrzalka;
 	string nazwa;
        int wzrost;
        int zdrowie;
